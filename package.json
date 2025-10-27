@@ -1,0 +1,22 @@
+{
+  "name": "playwright-warmup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DiNeves/playwright-warmup.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DiNeves/playwright-warmup/issues"
+  },
+  "homepage": "https://github.com/DiNeves/playwright-warmup#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.9.1"
+  }
+}
