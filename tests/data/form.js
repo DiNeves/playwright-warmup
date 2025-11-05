@@ -1,0 +1,42 @@
+export const users = [ 
+    {
+        name: 'Tatiana Taketsuma',
+        email: 'tatiana.taketsuma@gmail.com',
+        password: 'password1234',
+        country: 'canada',
+        gender: 'Female',
+        hobbies: [ 'Travel', 'Movies' ],
+    },
+    {
+        name: 'Diana Neves',
+        email: 'diana.neves@gmail.com',
+        password: 'password4321',
+        country: 'portugal',
+        gender: 'Female',
+        hobbies: [ 'Read books', 'Travel', 'Video Games', 'Sports', 'Movies', 'Board Games'],
+    },
+    {
+        name: 'Amy Lee',
+        email: 'amy.lee@hotmail.com',
+        password: 'password3698',
+        country: 'usa',
+        gender: 'Female',
+        hobbies: [],
+    },
+        {
+        name: 'Speedy Gonzalez',
+        email: 'speedy.gonzalez@yahoo.com',
+        password: 'password8552',
+        country: 'mexico',
+        gender: 'Other',
+        hobbies: [],
+    },
+    {
+        name: 'Bruno Machado',
+        email: 'brunomachadors@gmail.com',
+        password: 'password9876',
+        country: 'brazil',
+        gender: 'Male',
+        hobbies: [ 'Video Games' ],
+    },
+];

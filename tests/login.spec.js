@@ -9,7 +9,7 @@ test('Login successful', async ({ page }) => {
     await page.getByRole('button', { name: 'Login' }).click();
 
     // Needed to extend timeout to 10ms because the test is slower when running in web-kit (it takes 7.9ms to run) 
-    await expect(page.getByText('User successfully logged in!')).toBeVisible(({ timeout: 10_000 }));
+    await expect(page.getByText('User successfully logged in!')).toBeVisible();
 
 }),
 
