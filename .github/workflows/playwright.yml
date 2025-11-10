@@ -8,17 +8,57 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    
+    # Exports secrets as variables in the yml job
+    env:
+      VALID_USERNAME: ${{ secrets.VALID_USERNAME }}
+      VALID_PASSWORD: ${{ secrets.VALID_PASSWORD }}
+      BLOCKED_USERNAME: ${{ secrets.BLOCKED_USERNAME }}
+      BLOCKED_PASSWORD: ${{ secrets.BLOCKED_PASSWORD }}
+      INVALID_USER_USERNAME: ${{ secrets.INVALID_USER_USERNAME }}
+      INVALID_USER_PASSWORD: ${{ secrets.INVALID_USER_PASSWORD }}
+      INVALID_PASS_USERNAME: ${{ secrets.INVALID_PASS_USERNAME }}
+      INVALID_PASS_PASSWORD: ${{ secrets.INVALID_PASS_PASSWORD }}
+
     steps:
     - uses: actions/checkout@v4
+
     - uses: actions/setup-node@v4
       with:
         node-version: lts/*
+        cache: npm
+
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+
+    # (Optional) Debug check - show if variables exist (just ***)
+    - name: Sanity check env (masked)
+      run: | 
+        echo "VALID_USERNAME set? ${{ env.VALID_USERNAME != '' }}"
+        echo "BLOCKED_USERNAME set? ${{ env.BLOCKED_USERNAME != '' }}"
+        echo "INVALID_USER_USERNAME set? ${{ env.INVALID_USER_USERNAME != '' }}"
+        echo "INVALID_PASS_USERNAME set? ${{ env.INVALID_PASS_USERNAME != '' }}"
+        env | grep -E '^(VALID_|BLOCKED_|INVALID_USER_|INVALID_PASS_)' || true
+      
+    # (Optional) Fail if any secret is empty
+    - name: Fail if missing required secrets
+      run: | 
+        required_vars=(VALID_USERNAME VALID_PASSWORD BLOCKED_USERNAME) 
+        missing=0 
+        for v in "${required_vars[@]}"; do 
+          if [ -z "${!v}" ]; then 
+            echo "❌ Missing $v" 
+            missing=1
+          fi 
+        done
+        exit $missing
+
     - name: Run Playwright tests
       run: npx playwright test
+
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
