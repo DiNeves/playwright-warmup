@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { USERS, MESSAGES, HELPER } from './data/login';
+import { USERS, MESSAGES, HELPER } from './data/loginEnvVars.data';
 
 // Tests several test scenarios in the login page to validate if the login form is working according to the 
 // defined requirements using the mocked data contained in the login.js file.
