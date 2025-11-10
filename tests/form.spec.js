@@ -15,10 +15,10 @@ test.describe('Test form page fullfilment for multiple users', () => {
       await page.getByLabel('Country *').selectOption(user.country);
       await page.getByRole('radio', { name: user.gender, exact: true }).check();
       
-      // only search for hobbies if there is, at least, 1 hobbie in the user's options
+      // only search for hobbies if there is, at least, 1 hobby in the user's options
       if (user.hobbies && user.hobbies.length > 0) {
-        for (const hobbie of user.hobbies) {
-          await page.getByRole('checkbox', { name: hobbie }).check();
+        for (const hobby of user.hobbies) {
+          await page.getByRole('checkbox', { name: hobby }).check();
         }
       }
       
