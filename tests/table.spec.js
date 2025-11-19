@@ -5,7 +5,8 @@ import hpCharacters from './data/json/hpCharacters.json';
 for (const c of hpCharacters) {
     
     // dynamic locator 
-    test('Character ' + c.name, async ({ page }) => {
+    // with the skip parameter, the dynamic tests generated won't be executed by default.
+    test.skip('Character ' + c.name, async ({ page }) => {
         
         await page.goto('/table');
 
