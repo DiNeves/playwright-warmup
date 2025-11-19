@@ -18,7 +18,6 @@ export class HpTablePage {
     async goToTable() {
         await test.step("Navigate to HP Table page", async () => {
             await this.page.goto("/table");
-            // await this.table.waitFor({ state: "visible" });
         });
     }
 
